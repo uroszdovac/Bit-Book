@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import './App.css';
 import Home from '../app/home/HomePage';
 import Feed from '../app/feed/FeedPage';
@@ -20,6 +19,7 @@ class App extends Component {
           <Route path="/feed/:id" component={SingleFeedItem} />
           <Redirect from="/" to="/home" />
         </Switch >
+
       </div>
     );
   }
