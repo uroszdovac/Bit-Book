@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
-import './home/HomePage';
+import Home from '../app/home/HomePage';
+import Feed from '../app/feed/FeedPage';
+import People from '../app/people/PeoplePage';
+import Profile from '../app/profile/ProfilePage';
+import SingleFeedItem from '../app/singleFeedItem/SingleFeedItemPage';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/feed" component={Feed} />
+          <Route path="/people" component={People} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/feed/:id" component={SingleFeedItem} />
+          <Redirect from="/" to="/home" />
+        </Switch >
       </div>
     );
   }
