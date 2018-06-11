@@ -1,5 +1,10 @@
-import postServices from '../../services/postServices';
+import React from 'react';
 
-postServices.getPosts().then(response => console.log(response.data));
+class Home extends React.Component {
+    constructor(props) {
+        super(props)
 
+    }
+}
 
+export default Home;
