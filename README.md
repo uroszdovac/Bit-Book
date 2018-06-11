@@ -1,32 +1,36 @@
-Login/Register Page
+/app
 
-    Login.js
-    Register.js
+    /home
+
+        HomePage.js
+            Login.js
+            Register.js
 
 
-Profile Page
+    /profile
+    
+        Profile.js
+        EditProfile.js
 
-    EditProfile.js
+    /people
 
-People Page
+        ListOfPeople.js
+            ListItem.js
+    
+    /feed
 
-    ListOfPeople.js
-        ListItem.js
-   
-Feed Page
+        Feed.js
+            FeedItem.js
+        Sidebar.js
+        NewVideoPost.js
+        NewPost.js
+        NewImage.js
 
-    Feed.js
+    /singleFeedItem
+
         FeedItem.js
-    Sidebar.js
-    NewVideoPost.js
-    NewPost.js
-    NewImage.js
-
-SingleFeedItem Page
-
-    FeedItem.js
-    CommentList.js
-        CommentListItem.js
+        CommentList.js
+            CommentListItem.js
 
 /partials
     /header
