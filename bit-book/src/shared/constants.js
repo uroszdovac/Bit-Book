@@ -1,0 +1,1 @@
+export const serviceURL = "http://bitbookapi.azurewebsites.net/api";
