@@ -8,7 +8,7 @@ const FeedList = (props) => {
     return (
         <div className='col-8 offset-2'>
             {props.posts.map(post => {
-                return <Link to={"/feed/" + post.id}><FeedListItem type={post.type} numOfComments={post.commentsNum} value={post.value} /></Link>
+                return <Link to={"/feed/" + post.type + "/" + post.id}><FeedListItem type={post.type} numOfComments={post.commentsNum} value={post.value} /></Link>
             })}
         </div>
     )
