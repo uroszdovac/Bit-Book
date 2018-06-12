@@ -3,7 +3,7 @@ import React from 'react';
 const TextPost = (props) => {
 
     return (
-        <div>
+        <div className='textItem'>
             <p>{props.value}</p>
         </div>
     )

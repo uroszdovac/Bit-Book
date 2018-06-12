@@ -4,10 +4,92 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  color: initial;
+}
+
+a:hover {
+  text-decoration: none;
+  color: initial;
+}
+
 /*********   HEADER   **********/
 
 header {
+  color: white;
   padding: 20px;
+  background-color: rgb(34, 115, 245);
 }
 
+h1 {
+  margin-bottom: 0;
+}
+
+header, nav div a {
+  color: white;
+}
+
+nav div a {
+  font-size: 110%;
+}
+
+/*********   FOOTER   **********/
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+
+}
+
+/*********   FEED   **********/
+
+.side-bar {
+  margin-top: 30px;
+  text-align: left;
+}
+
+.side-bar p{
+  margin-bottom: 5px;
+}
+
+#dropdownMenuButton, .dropdown-menu {
+  width: 200px;
+}
+
+.dropdownMenuButton span {
+  margin-right: 20px;
+}
+
+
+iframe,img {
+  width: 100%;
+}
+
+iframe:hover {
+  
+}
+
+.item {
+  margin: 30px;
+  padding: 15px;
+  border: 1px solid rgb(213, 242, 255);
+  border-radius: 6px;
+  background-color: rgb(231, 248, 255);
+  box-shadow: 0px 9px 21px -6px rgba(138, 138, 138, 0.57);
+}
+
+.textItem {
+  background-color: white;
+  padding: 10px 20px;
+}
+
+.textItem p {
+  text-align: left;
+  margin: 0;
+  font-size: 120%;
+}
+
+.item-comments {
+  margin-top: 15px;
+}
 
