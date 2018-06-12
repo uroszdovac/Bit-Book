@@ -3,8 +3,12 @@ import React from 'react';
 const Footer = () => {
 
     return (
-        <footer className="row">
-            <p>Copyright &#169; Tobdzije 2018</p>
+        <footer>
+            <div className='row'>
+                <div className='col-4 offset-4'>
+                    <p>Copyright &#169; Tobdzije 2018</p>
+                </div>
+            </div>
         </footer>
     )
 }

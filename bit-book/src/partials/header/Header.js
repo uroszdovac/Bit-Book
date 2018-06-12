@@ -3,9 +3,13 @@ import Navigation from './Navigation';
 
 const Header = () => {
     return (
-        <header className="row">
-            <h1 className="col-3">Bitbook</h1>
-            <Navigation />
+        <header className="container-fluid">
+            <div className="container">
+                <div className="row"><div className="col-3">
+                    <h1>Bitbook</h1>
+                </div>
+                    <Navigation /></div>
+            </div>
         </header>
     )
 }

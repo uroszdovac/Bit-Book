@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const FeedList = (props) => {
 
     return (
-        <div className='col-8 offset-2'>
+        <div className='col-6 offset-3'>
             {props.posts.map(post => {
                 return <Link to={"/feed/" + post.type + "/" + post.id}><FeedListItem type={post.type} numOfComments={post.commentsNum} value={post.value} /></Link>
             })}

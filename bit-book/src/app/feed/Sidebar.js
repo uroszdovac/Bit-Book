@@ -3,17 +3,17 @@ import React from 'react';
 const SideBar = (props) => {
 
     return (
-        <div>
+        <div className='col-3 side-bar' id="dropdownMenuButton">
             <p><strong>Show on feed</strong></p>
 
-            <div class="dropdown bg-primary">
-                <div class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown">
+                <div className="btn btn-secondary dropdown-toggle bg-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     All posts
                 </div>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Videos</a>
-                    <a class="dropdown-item" href="#">Images</a>
-                    <a class="dropdown-item" href="#">Text</a>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a className="dropdown-item" href="#">Videos</a>
+                    <a className="dropdown-item" href="#">Images</a>
+                    <a className="dropdown-item" href="#">Text</a>
                 </div>
             </div>
 

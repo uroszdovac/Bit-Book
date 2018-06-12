@@ -1,6 +1,9 @@
 import React from 'react';
 import FeedList from './FeedList';
 import Header from '../../partials/header/Header';
+import Footer from '../../partials/footer/Footer';
+import Sidebar from './Sidebar';
+import NewPostButton from './NewPostButton';
 import postServices from '../../services/postServices';
 
 class Feed extends React.Component {
@@ -30,9 +33,14 @@ class Feed extends React.Component {
         return (
             <div>
                 <Header />
-                <FeedList posts={this.state.posts} />
-                {/* <Sidebar /> */}
-
+                <div className='containter-fluid'>
+                    <div className='row'>
+                        <FeedList posts={this.state.posts} />
+                        <Sidebar />
+                    </div>
+                </div>
+                <NewPostButton />
+                <Footer />
             </div>
         )
     }
