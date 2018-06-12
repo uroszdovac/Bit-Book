@@ -7,15 +7,7 @@ const FeedListItem = (props) => {
 
     return (
         <div>
-            {props.posts.map(post => {
-                if (post.type == 'text') {
-                    return <TextPost value={post.value} />
-                } else if (post.type == 'image') {
-                    return <Image value={post.value} />
-                } else {
-                    return <Video value={post.value} />
-                }
-            })}
+            {props.type === "text" ? <TextPost value={props.value} /> : (props.type === "image" ? <Image value={props.value} /> : <Video value={props.value} />)}
 
             <span className='col-3'>{props.type} post</span>
             <span className='col-3 offset-6'>{props.numOfComments} Comments</span>

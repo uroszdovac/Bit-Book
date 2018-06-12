@@ -1,6 +1,8 @@
 import { serviceURL } from '../shared/constants.js';
 import axios from 'axios';
-import Post from '../entities/User';
+import ImagePost from '../entities/ImagePost';
+import VideoPost from '../entities/VideoPost';
+import TextPost from '../entities/TextPost';
 
 
 class PostServices {
@@ -14,7 +16,12 @@ class PostServices {
         }).then(response => {
             const result = response.data;
             return result.map(post => {
-                return new Post(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum)
+                if (post.type === 'image') {
+                    return new ImagePost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.imageUrl)
+                } else if (post.type === 'video') {
+                    return new VideoPost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.videoUrl)
+                }
+                return new TextPost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.text)
             })
         })
     }
