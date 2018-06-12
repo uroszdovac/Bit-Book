@@ -17,6 +17,18 @@ class UserServices {
             })
         })
     }
+
+    getUser(id) {
+        return axios.get(serviceURL + "/users/" + id, {
+            headers: {
+                Key: 'bitbookdev',
+                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+            }
+        }).then(response => {
+            const user = response.data;
+            return new User(user.id, user.name, user.aboutShort, user.lastPostDate, user.avatarUrl);
+        })
+    }
 }
 
-export default new PostServices();
+export default new UserServices();
