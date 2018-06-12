@@ -19,7 +19,6 @@ class App extends Component {
           <Route path="/feed/:id" component={SingleFeedItem} />
           <Redirect from="/" to="/home" />
         </Switch >
-
       </div>
     );
   }
