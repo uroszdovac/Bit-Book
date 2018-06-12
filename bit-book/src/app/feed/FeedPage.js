@@ -3,6 +3,7 @@ import FeedList from './FeedList';
 import Header from '../../partials/header/Header';
 import Footer from '../../partials/footer/Footer';
 import Sidebar from './Sidebar';
+import NewPostButton from './NewPostButton';
 import postServices from '../../services/postServices';
 
 class Feed extends React.Component {
@@ -38,6 +39,7 @@ class Feed extends React.Component {
                         <Sidebar />
                     </div>
                 </div>
+                <NewPostButton />
                 <Footer />
             </div>
         )
