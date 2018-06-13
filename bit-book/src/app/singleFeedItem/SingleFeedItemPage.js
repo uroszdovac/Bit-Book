@@ -2,8 +2,10 @@ import React from 'react';
 import postServices from '../../services/postServices';
 import userServices from '../../services/userServices';
 import Header from '../../partials/header/Header';
+import Footer from '../../partials/footer/Footer';
 import FeedItem from './FeedItem';
 import CommentInput from './CommentInput';
+import NoComments from './NoComments';
 import CommentList from './CommentList';
 
 
@@ -31,7 +33,7 @@ class SingleFeedItem extends React.Component {
                 })
             });
         }
-        return postServices.getTextPost(id).then(post => {
+        return postServices.getVideoPost(id).then(post => {
             this.setState({
                 post
             })
@@ -59,11 +61,18 @@ class SingleFeedItem extends React.Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <Header />
-                <FeedItem post={this.state.post} />
-                {/* {/* <CommentInput /> */}
-                <CommentList comments={this.state.comments} />
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-6 offset-3">
+                            <FeedItem post={this.state.post} />
+                            <CommentInput />
+                            {(this.state.comments.length === 0) ? <NoComments /> : <CommentList comments={this.state.comments} />}
+                        </div>
+                    </div>
+                </div>
+                <Footer />
             </div>
         )
     }

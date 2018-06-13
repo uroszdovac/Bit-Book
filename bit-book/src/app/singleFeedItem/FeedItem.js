@@ -6,7 +6,7 @@ import Image from '../feed/ImagePost';
 const FeedItem = (props) => {
 
     return (
-        <div>
+        <div className='item'>
             {props.post.type === "text" ? <TextPost value={props.post.value} /> : (props.post.type === "image" ? <Image value={props.post.value} /> : <Video value={props.post.value} />)}
         </div>
     )
