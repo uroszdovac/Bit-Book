@@ -2,6 +2,8 @@ import React from 'react';
 import Video from './VideoPost';
 import Image from './ImagePost';
 import TextPost from './TextPost';
+import { Link } from 'react-router-dom';
+
 
 const FeedListItem = (props) => {
 
@@ -11,7 +13,7 @@ const FeedListItem = (props) => {
 
             <div className='item-comments'>
                 <span className='col-3 item-comments'>{props.type} post</span>
-                <span className='col-3 offset-6 item-comments'>{props.numOfComments} Comments</span>
+                <Link to={"/feed/" + props.type + "/" + props.id}><span className='col-3 offset-6 item-comments'>{props.numOfComments} Comments</span></Link>
             </div>
         </div>
     )
