@@ -19,7 +19,6 @@ class CommentListItem extends React.Component {
     }
     componentDidMount() {
         this.getUser(this.props.authorId)
-        console.log(this.props.authorId);
     }
 
     render() {
