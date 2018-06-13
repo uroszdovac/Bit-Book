@@ -18,7 +18,6 @@ class Feed extends React.Component {
 
     loadPosts() {
         return postServices.getPosts().then(posts => {
-            console.log(posts)
             this.setState({
                 posts
             })

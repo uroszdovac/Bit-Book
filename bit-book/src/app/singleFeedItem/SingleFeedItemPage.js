@@ -1,6 +1,7 @@
 import React from 'react';
 import postServices from '../../services/postServices';
 import userServices from '../../services/userServices';
+import commentServices from '../../services/commentServices';
 import Header from '../../partials/header/Header';
 import Footer from '../../partials/footer/Footer';
 import FeedItem from './FeedItem';
@@ -15,9 +16,15 @@ class SingleFeedItem extends React.Component {
 
         this.state = {
             comments: [],
-            post: {}
+            post: {},
+            content: "",
+            status: false
         }
+
+        this.changeContent = this.changeContent.bind(this);
+        this.makeComment = this.makeComment.bind(this);
     }
+
 
     getValue(id, type) {
         if (type === "text") {
@@ -40,11 +47,31 @@ class SingleFeedItem extends React.Component {
         });
     }
 
+    changeContent(text) {
+        this.setState({
+            content: text
+        })
+    }
+
+    makeComment() {
+        let newComment = {
+            postId: this.props.match.params.id,
+            body: this.state.content
+        }
+        commentServices.postComment(newComment)
+            .then(response => {
+                if (response >= 200 && response < 300) {
+                    this.loadComment()
+                }
+            })
+    }
+
     loadComment() {
         const id = this.props.match.params.id;
         const type = this.props.match.params.type;
 
-        return postServices.getComments(id).then(comments => {
+        return commentServices.getComments(id).then(comments => {
+
             this.setState({
                 comments
             })
@@ -67,7 +94,7 @@ class SingleFeedItem extends React.Component {
                     <div className="row">
                         <div className="col-6 offset-3">
                             <FeedItem post={this.state.post} />
-                            <CommentInput />
+                            <CommentInput postComment={this.makeComment} content={this.changeContent} />
                             {(this.state.comments.length === 0) ? <NoComments /> : <CommentList comments={this.state.comments} />}
                         </div>
                     </div>

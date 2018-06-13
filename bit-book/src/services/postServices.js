@@ -3,7 +3,6 @@ import axios from 'axios';
 import ImagePost from '../entities/ImagePost';
 import VideoPost from '../entities/VideoPost';
 import TextPost from '../entities/TextPost';
-import Comment from '../entities/Comment';
 
 
 class PostServices {
@@ -23,20 +22,6 @@ class PostServices {
                     return new VideoPost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.videoUrl)
                 }
                 return new TextPost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.text)
-            })
-        })
-    }
-
-    getComments(id) {
-        return axios.get(serviceURL + "/Comments?postId=" + id, {
-            headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
-            }
-        }).then(response => {
-            const result = response.data;
-            return result.map(comment => {
-                return new Comment(comment.id, comment.dateCreated, comment.body, comment.postId, comment.authorName, comment.authorId);
             })
         })
     }
