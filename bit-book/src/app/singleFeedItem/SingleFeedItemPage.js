@@ -31,7 +31,7 @@ class SingleFeedItem extends React.Component {
                 })
             });
         }
-        return postServices.getTextPost(id).then(post => {
+        return postServices.getVideoPost(id).then(post => {
             this.setState({
                 post
             })
