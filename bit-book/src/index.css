@@ -373,3 +373,49 @@ iframe,img {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+/***********  PEOPLE  ************/
+
+.search {
+  margin-top: 30px;
+}
+
+.search input{
+  width: 95%;
+  border: none;
+  padding-left: 15px;
+  font-size: 130%;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.fa-search {
+  font-size:170%;
+}
+
+.itemPeoplePage{
+  background-color: white;
+}
+
+.itemPeoplePage img{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.itemPeoplePage p,h4 {
+  text-align: left;
+}
+
+#userNotFound {
+  font-size: 270%;
+  text-align: center;
+  color: rgb(122, 122, 122);
+  margin: 102px auto; 
+}
+
+.fa-frown {
+  font-size: 220%;
+  
+}
