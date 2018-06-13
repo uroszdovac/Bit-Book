@@ -61,5 +61,6 @@ class PostServices {
             return new TextPost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.text)
         });
     }
+
 }
 export default new PostServices();
