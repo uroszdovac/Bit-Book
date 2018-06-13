@@ -174,7 +174,7 @@ iframe,img {
 }
 
 .item {
-  margin: 30px;
+  margin: 30px 0;
   padding: 15px;
   border: 1px solid rgb(213, 242, 255);
   border-radius: 6px;
@@ -198,18 +198,53 @@ iframe,img {
 }
 
 
+/* COMMENT */
 
+.comment {
+  background-color: rgb(231, 248, 255);
+  margin-left: 0px;
+  margin-bottom: 10px;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+.comment img {
+  border-radius: 50%;
+  height: 100px;
+}
+.comment h3 {
+  margin-top: 10px;
+  font-size: 100%;
+}
+.comment-text {
+  text-align: left;
+  padding: 10px;
+}
+#input {
+  margin: 0;
+  border: 1px solid white;
+  border-bottom: 1px solid rgb(206, 206, 206);
+  height: 40px;
+  width: 85%;
+  /* margin-bottom: 50px; */
+  outline: none;
+  font-size: 20px;
+}
+.send {
+  padding-top: 10px;
+}
+#button {
+  background-color: rgb(231, 248, 255);
+  color: black;
+  border-radius: 5px;
+  width: 100px;
+  margin-left: -60px;
+}
+#noComments {
+  font-size: 270%;
+  text-align: center;
+  color: rgb(122, 122, 122);
+  margin: 102px auto; 
+}
+.fa-angellist {
+  font-size: 220%;
+  
+}
