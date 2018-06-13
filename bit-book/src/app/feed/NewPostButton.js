@@ -1,19 +1,19 @@
 import React from 'react';
 
-const NewPostButton = () => {
+const NewPostButton = (props) => {
 
     return (
 
         <div>
-            <div class="container">
+            <div className="container">
                 <div id='floating-buttons'>
-                    <div class="buttons" tooltip="New Post"></div>
+                    <div className="buttons" tooltip="New Post" onClick={props.open} onClick={props.text}></div>
 
-                    <div class="buttons" tooltip="New Video"></div>
+                    <div className="buttons" tooltip="New Video" onClick={props.video}></div>
 
-                    <div class="buttons" tooltip="New Image"></div>
+                    <div className="buttons" tooltip="New Image" onClick={props.open} onClick={props.image}></div>
 
-                    <div class="buttons"></div>
+                    <div className="buttons"></div>
                 </div>
             </div>
         </div>

@@ -62,5 +62,48 @@ class PostServices {
         });
     }
 
+    sendVideoPost(newVideoPost) {
+        return axios({
+            method: 'post',
+            url: `${serviceURL}/VideoPosts`,
+            data: newVideoPost,
+            headers: {
+                Key: 'bitbookdev',
+                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.status)
+    }
+
+    sendImagePost(newImagePost) {
+        return axios({
+            method: 'post',
+            url: `${serviceURL}/ImagePosts`,
+            data: newImagePost,
+            headers: {
+                Key: 'bitbookdev',
+                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.status)
+    }
+
+    sendTextPost(newTextPost) {
+        return axios({
+            method: 'post',
+            url: `${serviceURL}/TextPosts`,
+            data: newTextPost,
+            headers: {
+                Key: 'bitbookdev',
+                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.status)
+    }
+
+
 }
 export default new PostServices();
