@@ -15,6 +15,7 @@ class App extends Component {
           <Route exact path="/home" component={Home} />
           <Route exact path="/feed" component={Feed} />
           <Route path="/people" component={People} />
+          <Route path="/people/:id" component={People} />
           <Route path="/profile" component={Profile} />
           <Route path="/feed/:type/:id" component={SingleFeedItem} />
           <Redirect from="/" to="/home" />

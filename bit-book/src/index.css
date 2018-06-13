@@ -332,4 +332,44 @@ iframe,img {
   padding: 5px
 }
 
+#editButton {
+  text-decoration: underline;
+  color: rgb(86, 86, 245)
+}
 
+/*    EDIT PROFILE    */
+
+.editProfile img{
+  width: 85%;
+}
+.title{
+  text-align: center;
+}
+.uploadPhoto {
+  text-align: center;
+  /* margin-left: 1px; */
+}
+.uploadPhoto input , .close-update input{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(102, 151, 243);
+  border: none;
+  padding: 5px;
+}
+.name {
+  padding-top: 25px;
+}
+.name h4 {
+  color:red;
+  font-size: 100%;
+}
+.name input, .description input{
+  border: 1px white solid;
+  border-bottom: 1px red solid;
+  width: 100%
+}
+.description input{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
