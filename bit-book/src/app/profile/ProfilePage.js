@@ -1,16 +1,26 @@
 import React from 'react';
 import Header from '../../partials/header/Header.js';
+import Footer from '../../partials/footer/Footer.js';
 import userServices from '../../services/userServices';
+import EditProfile from './EditProfile.js';
+import Modal from 'react-responsive-modal';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            profile: {}
+            profile: {},
+            openFirstModal: false,
+            openSecondModal: false
         }
-    }
 
+        this.onCloseFirstModal = this.onCloseFirstModal.bind(this);
+        this.onOpenFirstModal = this.onOpenFirstModal.bind(this);
+        this.onCloseSecondModal = this.onCloseSecondModal.bind(this);
+        this.onOpenSecondModal = this.onOpenSecondModal.bind(this);
+
+    }
 
     getMyProfile() {
         return userServices.getMyProfile()
@@ -21,8 +31,36 @@ class Profile extends React.Component {
             })
     }
 
+    getProfile() {
+        const id = this.props.match.params.id;
+
+        return userServices.getProfile(id)
+            .then(profile => {
+                this.setState({
+                    profile
+                })
+            })
+    }
+    onOpenFirstModal = () => {
+        this.setState({ openFirstModal: true });
+    };
+
+    onCloseFirstModal = () => {
+        this.setState({ openFirstModal: false });
+    };
+
+    onOpenSecondModal = () => {
+        this.setState({ openSecondModal: true });
+    };
+
+    onCloseSecondModal = () => {
+        this.setState({ openSecondModal: false });
+    };
+
     componentDidMount() {
-        this.getMyProfile();
+
+        (this.props.match.params.id) ? this.getProfile() : this.getMyProfile();
+
     }
 
     render() {
@@ -32,6 +70,7 @@ class Profile extends React.Component {
                 <div className="container">
                     <img src={this.state.profile.avatar} alt="ProfileImage" />
                     <h2>{this.state.profile.name}</h2>
+                    {(this.props.match.params.id) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
                     <p>{this.state.profile.aboutShort}</p>
                     <div className="row">
                         <div className="col-3 offset-3">
@@ -48,6 +87,10 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>
+                    <EditProfile />
+                </Modal>
+                <Footer />
             </div>
         )
     }
