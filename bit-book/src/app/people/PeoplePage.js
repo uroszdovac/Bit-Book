@@ -4,6 +4,7 @@ import Footer from '../../partials/footer/Footer';
 import ListOfPeople from './ListOfPeople';
 import Search from './Search';
 import userService from '../../services/userServices';
+import Loading from '../../partials/Loading';
 
 class People extends React.Component {
     constructor(props) {
@@ -11,7 +12,8 @@ class People extends React.Component {
 
         this.state = {
             users: [],
-            searchText: ''
+            searchText: '',
+            loading: true
         }
         this.searchUsers = this.searchUsers.bind(this);
     }
@@ -19,7 +21,8 @@ class People extends React.Component {
     loadPeople() {
         userService.getUsers().then(users => {
             this.setState({
-                users
+                users: users,
+                loading: false
             })
         })
     }
@@ -42,8 +45,9 @@ class People extends React.Component {
             <div>
                 <Header />
                 <div className='col-6 offset-3'>
-                    <Search search={this.searchUsers} />
-                    <ListOfPeople users={this.state.users} search={this.state.searchText} />
+                    {(this.state.loading) ? <Loading /> : <div><Search search={this.searchUsers} />
+                        <ListOfPeople users={this.state.users} search={this.state.searchText} /></div>}
+
                 </div>
                 <Footer />
 

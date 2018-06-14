@@ -3,6 +3,7 @@ import Header from '../../partials/header/Header.js';
 import Footer from '../../partials/footer/Footer.js';
 import userServices from '../../services/userServices';
 import EditProfile from './EditProfile.js';
+import Loading from '../../partials/Loading';
 import Modal from 'react-responsive-modal';
 
 class Profile extends React.Component {
@@ -12,7 +13,8 @@ class Profile extends React.Component {
         this.state = {
             profile: {},
             openFirstModal: false,
-            openSecondModal: false
+            openSecondModal: false,
+            loading: true
         }
 
         this.onCloseFirstModal = this.onCloseFirstModal.bind(this);
@@ -26,7 +28,8 @@ class Profile extends React.Component {
         return userServices.getMyProfile()
             .then(profile => {
                 this.setState({
-                    profile
+                    profile,
+                    loading: false
                 })
             })
     }
@@ -70,7 +73,7 @@ class Profile extends React.Component {
         return (
             <div id="profile">
                 <Header />
-                <div className="container">
+                {(this.state.loading) ? <Loading /> : <div className="container">
                     <img src={this.state.profile.avatar} alt="ProfileImage" />
                     <h2>{this.state.profile.name}</h2>
                     {console.log(this.props.match.params.id)
@@ -92,6 +95,8 @@ class Profile extends React.Component {
                         </div>
                     </div>
                 </div>
+                }
+
                 <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>
                     <EditProfile />
                 </Modal>

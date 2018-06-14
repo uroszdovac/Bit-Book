@@ -11,9 +11,10 @@ const SideBar = (props) => {
                     All posts
                 </div>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" href="#">Videos</a>
-                    <a className="dropdown-item" href="#">Images</a>
-                    <a className="dropdown-item" href="#">Text</a>
+                    <div className="dropdown-item" onClick={() => props.type('video image text')}>All Posts</div>
+                    <div className="dropdown-item" onClick={() => props.type('video')}>Videos</div>
+                    <div className="dropdown-item" onClick={() => props.type('image')}>Images</div>
+                    <div className="dropdown-item" onClick={() => props.type('text')}>Text</div>
                 </div>
             </div>
 
