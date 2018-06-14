@@ -13,7 +13,6 @@ const ListOfPeople = (props) => {
         return (element.name.toLowerCase()).includes(props.search.toLowerCase())
     }
 
-
     return (
         <div>
 
@@ -21,6 +20,7 @@ const ListOfPeople = (props) => {
 
             {props.users.filter(filterUserList).map(user => {
                 return <ListItem id={user.id} avatar={user.avatarUrl} name={user.name} about={user.aboutShort} lastPost={user.lastPostDate} />
+
             })}
 
         </div>

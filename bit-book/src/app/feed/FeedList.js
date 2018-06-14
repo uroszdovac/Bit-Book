@@ -6,8 +6,11 @@ const FeedList = (props) => {
 
     return (
         <div className='col-6 offset-3'>
-            {props.posts.map(post => {
-                return <FeedListItem type={post.type} numOfComments={post.commentsNum} value={post.value} id={post.id} />
+            {props.posts.filter(post => {
+                return props.filterFeed.includes(post.type);
+            }).map(post => {
+                return < FeedListItem type={post.type} numOfComments={post.commentsNum} value={post.value} id={post.id} />
+
             })}
         </div>
     )

@@ -21,7 +21,8 @@ class Feed extends React.Component {
             open: false,
             videoContent: '',
             imageContent: '',
-            textContent: ''
+            textContent: '',
+            postType: 'video image text'
         }
 
         this.onCloseModal = this.onCloseModal.bind(this)
@@ -34,6 +35,7 @@ class Feed extends React.Component {
         this.createVideoPost = this.createVideoPost.bind(this)
         this.createImagePost = this.createImagePost.bind(this)
         this.createTextPost = this.createTextPost.bind(this)
+        this.filterPosts = this.filterPosts.bind(this)
     }
 
     loadPosts() {
@@ -55,6 +57,8 @@ class Feed extends React.Component {
         })
     }
 
+    /**** pop ups ****/
+
     imagePopUp() {
         this.setState({
             popUp: 'image',
@@ -65,7 +69,6 @@ class Feed extends React.Component {
         this.setState({
             popUp: 'video',
             open: true
-
         })
     }
     textPopUp() {
@@ -136,14 +139,21 @@ class Feed extends React.Component {
     }
 
 
+    filterPosts(type) {
+        this.setState({
+            postType: type
+        })
+    }
+
+
     render() {
         return (
             <div>
                 <Header />
                 <div className='containter-fluid'>
                     <div className='row'>
-                        <FeedList posts={this.state.posts} />
-                        <Sidebar />
+                        <FeedList posts={this.state.posts} filterFeed={this.state.postType} />
+                        <Sidebar type={this.filterPosts} />
 
                         <Modal open={this.state.open} onClose={this.onCloseModal} center>
                             {this.state.popUp === 'video' ? <NewVideoPost createVideo={this.createVideoPost} videoUrl={this.newVideoContent} /> : this.state.popUp === 'image' ? <NewImagePost imageUrl={this.newImageContent} createImage={this.createImagePost} /> : <NewTextPost createText={this.createTextPost} text={this.newTextContent} />}
