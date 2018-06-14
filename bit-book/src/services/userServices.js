@@ -1,6 +1,7 @@
 import { serviceURL } from '../shared/constants.js';
 import axios from 'axios';
 import User from '../entities/User';
+import UserProfile from '../entities/UserProfile'
 
 
 class UserServices {
@@ -27,7 +28,7 @@ class UserServices {
             }
         }).then(response => {
             const user = response.data;
-            return new User(user.userId, user.name, user.email, user.aboutShort, user.about, user.avatarUrl, user.postsCount, user.commentsCount);
+            return new UserProfile(user.userId, user.name, user.email, user.aboutShort, user.about, user.avatarUrl, user.postsCount, user.commentsCount);
         })
     }
 
@@ -39,7 +40,7 @@ class UserServices {
             }
         }).then(response => {
             const profile = response.data;
-            return new User(profile.userId, profile.name, profile.email, profile.aboutShort, profile.about, profile.avatarUrl, profile.postsCount, profile.commentsCount);
+            return new UserProfile(profile.userId, profile.name, profile.email, profile.aboutShort, profile.about, profile.avatarUrl, profile.postsCount, profile.commentsCount);
         })
     }
 }
