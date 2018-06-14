@@ -43,6 +43,31 @@ class UserServices {
             return new UserProfile(profile.userId, profile.name, profile.email, profile.aboutShort, profile.about, profile.avatarUrl, profile.postsCount, profile.commentsCount);
         })
     }
+    updateProfile(newProfile) {
+        return axios({
+            method: 'PUT',
+            url: `${serviceURL}/Profiles`,
+            data: newProfile,
+            headers: {
+                Key: 'bitbookdev',
+                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+            }
+        })
+            .then(response => response.status)
+    }
+
+    uploadImage(formData) {
+        return axios({
+            method: 'POST',
+            url: `${serviceURL}/upload`,
+            headers: {
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+
+            },
+            'body': formData
+        }).then(response => response.da)
+    }
 }
 
 export default new UserServices();

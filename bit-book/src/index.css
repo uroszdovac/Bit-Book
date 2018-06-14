@@ -378,8 +378,30 @@ iframe,img {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/***********  PEOPLE  ************/
 
+#uploadPhoto input {
+  margin: 10px 0;
+}
+.textInput {
+  border: 1px white solid;
+  border-bottom: 1px grey solid;
+  width: 100%;
+}
+.textInput:focus {
+  outline: none;
+}
+.uploadPhotoButton, .closeButton {
+  background-color: rgb(102, 151, 243);
+  border: none;
+  padding: 5px;
+}
+#uploadPhoto span {
+  color:red
+}
+/***********  PEOPLE  ************/
+.error {
+  padding-top: 10px;
+}
 .search {
   margin-top: 30px;
 }
