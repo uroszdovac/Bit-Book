@@ -1,5 +1,5 @@
 import React from 'react';
-
+import image from '../../images/upload-photo.png';
 
 class EditProfile extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class EditProfile extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-4 uploadPhoto">
-                        <img src="https://metrouk2.files.wordpress.com/2018/03/sei_1515845.jpg?w=748&h=498&crop=1" alt="image" />
+                        <img src={image} alt="image" />
                         <input type="button" value="UPLOAD PHOTO" />
                     </div>
                     <div className="col-8 name">

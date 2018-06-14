@@ -34,7 +34,10 @@ class Profile extends React.Component {
     getProfile() {
         const id = this.props.match.params.id;
 
-        return userServices.getProfile(id)
+        console.log("ajdi " + id);
+
+
+        return userServices.getUser(id)
             .then(profile => {
                 this.setState({
                     profile
@@ -70,6 +73,8 @@ class Profile extends React.Component {
                 <div className="container">
                     <img src={this.state.profile.avatar} alt="ProfileImage" />
                     <h2>{this.state.profile.name}</h2>
+                    {console.log(this.props.match.params.id)
+                    }
                     {(this.props.match.params.id) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
                     <p>{this.state.profile.aboutShort}</p>
                     <div className="row">

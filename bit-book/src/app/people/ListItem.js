@@ -10,7 +10,7 @@ const ListItem = (props) => {
                 <img src={props.avatar} alt='image' />
             </div>
             <div className='col-8'>
-                <Link to={'profile/' + props.id}><h4>{props.name}</h4></Link>
+                <Link to={'people/' + props.id}><h4>{props.name}</h4></Link>
                 <p>{props.about}</p>
             </div>
             <div className='col-2'>
