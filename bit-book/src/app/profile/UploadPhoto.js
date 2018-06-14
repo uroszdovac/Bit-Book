@@ -20,11 +20,13 @@ class UploadPhoto extends React.Component {
         })
 
         const isValid = validationImgUrl(event.target.value);
+
         if (!isValid) {
             this.setState({
                 error: 'This input is invalid!'
             })
         } else {
+            this.props.saveUrl(event.target.value);
             this.setState({
                 error: ""
             })
@@ -46,11 +48,11 @@ class UploadPhoto extends React.Component {
                 <div className="row">
                     <div className="col-9">
                         <div className="col-12">
-                            <input type='text' className="textInput" placeholder="Enter the URL of the image you wish to upload" onChange={this.contentHandler} />
+                            <input type='text' className="textInput" value={this.state.content} placeholder="Enter the URL of the image you wish to upload" onChange={this.contentHandler} />
                         </div>
                         <div className="col-12 row">
                             <div className="col-6">
-                                <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" />
+                                <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.closeModal} />
                             </div>
                             <div className="col-6 error">
                                 <span>{this.state.error}</span>

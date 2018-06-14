@@ -22,6 +22,9 @@ class Profile extends React.Component {
         this.onOpenFirstModal = this.onOpenFirstModal.bind(this);
         this.onCloseSecondModal = this.onCloseSecondModal.bind(this);
         this.onOpenSecondModal = this.onOpenSecondModal.bind(this);
+        this.changeImgUrl = this.changeImgUrl.bind(this);
+        this.getMyProfile = this.getMyProfile.bind(this);
+
 
     }
 
@@ -30,7 +33,8 @@ class Profile extends React.Component {
             .then(profile => {
                 this.setState({
                     profile,
-                    loading: false
+                    loading: false,
+                    imgUrl: ""
                 })
             })
     }
@@ -38,31 +42,35 @@ class Profile extends React.Component {
     getProfile() {
         const id = this.props.match.params.id;
 
-        console.log("ajdi " + id);
-
-
         return userServices.getUser(id)
             .then(profile => {
                 this.setState({
-                    profile
+                    profile,
+                    loading: false
                 })
             })
     }
-    onOpenFirstModal = () => {
+    onOpenFirstModal() {
         this.setState({ openFirstModal: true });
     };
 
-    onCloseFirstModal = () => {
+    onCloseFirstModal() {
         this.setState({ openFirstModal: false });
     };
 
-    onOpenSecondModal = () => {
+    onOpenSecondModal() {
         this.setState({ openSecondModal: true });
     };
 
-    onCloseSecondModal = () => {
+    onCloseSecondModal() {
         this.setState({ openSecondModal: false });
     };
+
+    changeImgUrl(imgUrl) {
+        this.setState({
+            imgUrl
+        })
+    }
 
     componentDidMount() {
 
@@ -74,11 +82,9 @@ class Profile extends React.Component {
         return (
             <div id="profile">
                 <Header />
-                {(this.state.loading) ? <Loading /> : <div className="container">
+                {(this.state.loading) ? <Loading /> : (<div className="container">
                     <img src={this.state.profile.avatar} alt="ProfileImage" />
                     <h2>{this.state.profile.name}</h2>
-                    {console.log(this.props.match.params.id)
-                    }
                     {(this.props.match.params.id) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
                     <p>{this.state.profile.aboutShort}</p>
                     <div className="row">
@@ -95,14 +101,14 @@ class Profile extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>)
                 }
 
                 <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>
-                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} />
+                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile}/>
                 </Modal>
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
-                    <UploadPhoto closeModal={this.onCloseSecondModal} />
+                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} />
                 </Modal>
                 <Footer />
             </div>
