@@ -105,7 +105,7 @@ class Profile extends React.Component {
                 }
 
                 <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>
-                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile}/>
+                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile} />
                 </Modal>
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
                     <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} />

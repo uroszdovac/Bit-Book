@@ -55,6 +55,19 @@ class UserServices {
         })
             .then(response => response.status)
     }
+
+    uploadImage(formData) {
+        return axios({
+            method: 'POST',
+            url: `${serviceURL}/upload`,
+            headers: {
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+
+            },
+            'body': formData
+        }).then(response => response.da)
+    }
 }
 
 export default new UserServices();

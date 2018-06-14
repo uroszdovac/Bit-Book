@@ -14,6 +14,7 @@ class EditProfile extends React.Component {
         this.nameHandler = this.nameHandler.bind(this);
         this.descriptionHandler = this.descriptionHandler.bind(this);
         this.updateProfile = this.updateProfile.bind(this);
+        // this.uploadFileHandler = this.uploadFileHandler.bind(this);
 
     }
 
