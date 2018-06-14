@@ -22,7 +22,7 @@ class EditProfile extends React.Component {
                 <div className="row">
                     <div className="col-4 uploadPhoto">
                         <img src={image} alt="image" />
-                        <input type="button" value="UPLOAD PHOTO" />
+                        <input type="button" value="UPLOAD PHOTO" onClick={this.props.openModal} />
                     </div>
                     <div className="col-8 name">
                         <h4>Name</h4>
@@ -34,7 +34,7 @@ class EditProfile extends React.Component {
                 </div>
                 <div className="row close-update">
                     <div className="col-2 offset-8">
-                        <input type='button' value='CLOSE' />
+                        <input type='button' value='CLOSE' onClick={this.props.closeModal} />
                     </div>
                     <div className="col-2">
                         <input type='button' value='UPDATE' />

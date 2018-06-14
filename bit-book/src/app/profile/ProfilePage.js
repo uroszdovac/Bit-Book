@@ -4,6 +4,7 @@ import Footer from '../../partials/footer/Footer.js';
 import userServices from '../../services/userServices';
 import EditProfile from './EditProfile.js';
 import Loading from '../../partials/Loading';
+import UploadPhoto from './UploadPhoto.js';
 import Modal from 'react-responsive-modal';
 
 class Profile extends React.Component {
@@ -98,7 +99,10 @@ class Profile extends React.Component {
                 }
 
                 <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>
-                    <EditProfile />
+                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} />
+                </Modal>
+                <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
+                    <UploadPhoto closeModal={this.onCloseSecondModal} />
                 </Modal>
                 <Footer />
             </div>
