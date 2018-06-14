@@ -20,15 +20,8 @@ const ListOfPeople = (props) => {
             {(props.users.filter(filterUserList).length === 0) ? <UserNotFound /> : ''}
 
             {props.users.filter(filterUserList).map(user => {
-                return <ListItem avatar={user.avatarUrl} name={user.name} about={user.aboutShort} lastPost={user.lastPostDate} />
+                return <ListItem id={user.id} avatar={user.avatarUrl} name={user.name} about={user.aboutShort} lastPost={user.lastPostDate} />
             })}
-
-            {/* // {
-                //     props.users.map(user => {
-                //         return <ListItem avatar={user.avatarUrl} name={user.name} about={user.aboutShort} lastPost={user.lastPostDate} />
-                //     }
-                //     )
-                // } */}
 
         </div>
     )
