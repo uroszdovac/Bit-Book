@@ -358,11 +358,12 @@ iframe,img {
   padding: 5px;
 }
 .name {
-  padding-top: 25px;
+  padding-top: 75px;
 }
 .name h4 {
   color:red;
   font-size: 100%;
+  margin-bottom: 10px;
 }
 .name input, .description input{
   border: 1px white solid;
