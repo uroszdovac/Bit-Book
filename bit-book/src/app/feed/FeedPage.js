@@ -36,6 +36,7 @@ class Feed extends React.Component {
         this.createImagePost = this.createImagePost.bind(this)
         this.createTextPost = this.createTextPost.bind(this)
         this.filterPosts = this.filterPosts.bind(this)
+        this.deletePost = this.deletePost.bind(this)
     }
 
     loadPosts() {
@@ -146,13 +147,22 @@ class Feed extends React.Component {
     }
 
 
+    deletePost(id) {
+        postServices.deletePost(id).then(response => {
+            if (response >= 200 && response < 300) {
+                this.loadPosts()
+            }
+        })
+    }
+
+
     render() {
         return (
             <div>
                 <Header />
                 <div className='containter-fluid'>
                     <div className='row'>
-                        <FeedList posts={this.state.posts} filterFeed={this.state.postType} />
+                        <FeedList deletePost={this.deletePost} posts={this.state.posts} filterFeed={this.state.postType} />
                         <Sidebar type={this.filterPosts} />
 
                         <Modal open={this.state.open} onClose={this.onCloseModal} center>

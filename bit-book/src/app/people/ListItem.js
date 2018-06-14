@@ -25,7 +25,7 @@ const ListItem = (props) => {
             </div>
             <div className='col-2'>
                 {
-                    (new Date(props.lastPost).toString() == new Date().toString() ?
+                    (new Date(props.lastPost).toString() === new Date().toString() ?
                         <div>
                             Last post at {new Date(props.lastPost).toString().split(' ')[4].slice(0, 5)}
                         </div>

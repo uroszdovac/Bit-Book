@@ -9,7 +9,7 @@ const FeedList = (props) => {
             {props.posts.filter(post => {
                 return props.filterFeed.includes(post.type);
             }).map(post => {
-                return < FeedListItem type={post.type} numOfComments={post.commentsNum} value={post.value} id={post.id} />
+                return < FeedListItem deletePost={props.deletePost} type={post.type} numOfComments={post.commentsNum} value={post.value} userName={post.userName} id={post.id} />
 
             })}
         </div>

@@ -27,7 +27,6 @@ class People extends React.Component {
         })
     }
 
-
     componentDidMount() {
         this.loadPeople()
     }
@@ -37,8 +36,6 @@ class People extends React.Component {
             searchText: text
         })
     }
-
-
 
     render() {
         return (
