@@ -37,13 +37,11 @@ class Profile extends React.Component {
     getProfile() {
         const id = this.props.match.params.id;
 
-        console.log("ajdi " + id);
-
-
         return userServices.getUser(id)
             .then(profile => {
                 this.setState({
-                    profile
+                    profile,
+                    loading: false
                 })
             })
     }
