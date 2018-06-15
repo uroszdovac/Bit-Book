@@ -54,7 +54,7 @@ class UploadPhoto extends React.Component {
                         </div>
                         <div className="col-12 row">
                             <div className="col-6">
-                                {(this.state.isValid) ? <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.closeModal} /> : <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" />}
+                                {(!this.state.isValid || this.state.content == "") ? <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" /> : <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.closeModal} />}
                             </div>
                             <div className="col-6 error">
                                 <span>{this.state.error}</span>
@@ -66,7 +66,7 @@ class UploadPhoto extends React.Component {
                             <input type="file" onChange={this.props.selectProfileImageHandler} />
                         </div>
                         <div className="col-6">
-                            <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.uploadPhoto} />
+                            {(this.props.fileImg === null) ? <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" /> : <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.uploadPhoto} />}
                         </div>
                     </div>
                 </div>

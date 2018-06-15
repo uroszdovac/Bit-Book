@@ -16,7 +16,7 @@ class Profile extends React.Component {
             openFirstModal: false,
             openSecondModal: false,
             loading: true,
-            fileImg: {}
+            fileImg: null
         }
 
         this.onCloseFirstModal = this.onCloseFirstModal.bind(this);
@@ -133,7 +133,7 @@ class Profile extends React.Component {
                     <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile} />
                 </Modal>
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
-                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} uploadPhoto={this.uploadPhoto} />
+                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} uploadPhoto={this.uploadPhoto} fileImg={this.state.fileImg} />
                 </Modal>
                 <Footer />
             </div>
