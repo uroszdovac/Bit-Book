@@ -407,6 +407,12 @@ iframe,img {
 #uploadPhoto span {
   color:red
 }
+#counter {
+  float: right;
+  color: red;
+  margin-right: 5px;
+  margin-top: 5px;
+}
 /***********  PEOPLE  ************/
 .error {
   padding-top: 10px;

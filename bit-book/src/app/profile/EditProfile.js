@@ -65,6 +65,7 @@ class EditProfile extends React.Component {
                     <div className="col-8 name">
                         <h4>Name</h4>
                         <input type="text" placeholder="Put your full name" onChange={this.nameHandler} />
+                        <span id="counter">{this.state.name.length}/30</span>
                     </div>
                     <div className="col-12 description">
                         <input type="text" placeholder="Put some text that describes you" onChange={this.descriptionHandler} />
