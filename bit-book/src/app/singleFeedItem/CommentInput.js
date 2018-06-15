@@ -9,6 +9,7 @@ class CommentInput extends React.Component {
         }
 
         this.contentHandler = this.contentHandler.bind(this);
+        this.postComment = this.postComment.bind(this);
     }
 
     contentHandler(event) {
@@ -18,6 +19,14 @@ class CommentInput extends React.Component {
         this.props.content(event.target.value)
     }
 
+    clearInputField() {
+        this.state.content = ""
+    }
+
+    postComment() {
+        this.props.postComment();
+        this.clearInputField();
+    }
     render() {
         return (
             <div className="row">
@@ -25,7 +34,7 @@ class CommentInput extends React.Component {
                     <input onChange={this.contentHandler} value={this.state.content} id="input" type="text" placeholder="Add your comment" />
                 </div>
                 <div className="col-2 send">
-                    {(this.state.content != "") ? <input onClick={this.props.postComment} id="button" type="button" value="Send" /> : <input onClick={this.props.postComment} disabled id="button" type="button" value="Send" />}
+                    {(this.state.content != "") ? <input onClick={this.postComment} id="button" type="button" value="Send" /> : <input onClick={this.props.postComment} disabled id="button" type="button" value="Send" />}
                 </div>
             </div>
         )
