@@ -114,15 +114,19 @@ class Profile extends React.Component {
                     <p>{this.state.profile.aboutShort}</p>
                     <div className="row">
                         <div className="col-3 offset-3">
-                            <div className="details">
-                                <span className="circle">P</span>
-                                <span>{this.state.profile.postsCount} posts</span>
+                            <div className="bar right">
+                                <div className="circle">
+                                    <p>P</p>
+                                </div>
+                                <p>{this.state.profile.postsCount} posts</p>
                             </div>
                         </div>
                         <div className="col-3">
-                            <div className="details" >
-                                <span className="circle">C</span>
-                                <span>{this.state.profile.commentsCount} comments</span>
+                            <div className="bar" >
+                                <div className="circle">
+                                    <p>C</p>
+                                </div>
+                                <p>{this.state.profile.commentsCount} comments</p>
                             </div>
                         </div>
                     </div>
