@@ -12,11 +12,11 @@ class Profile extends React.Component {
         super(props)
 
         this.state = {
-            profile: {},
+            profile: null,
             openFirstModal: false,
             openSecondModal: false,
             loading: true,
-            fileImg: {}
+            fileImg: null
         }
 
         this.onCloseFirstModal = this.onCloseFirstModal.bind(this);
@@ -36,8 +36,7 @@ class Profile extends React.Component {
             .then(profile => {
                 this.setState({
                     profile,
-                    loading: false,
-                    imgUrl: ""
+                    loading: false
                 })
             })
     }
@@ -131,10 +130,10 @@ class Profile extends React.Component {
                 }
 
                 <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>
-                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile} />
+                    <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile} profile={this.state.profile} />
                 </Modal>
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
-                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} uploadPhoto={this.uploadPhoto} />
+                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} uploadPhoto={this.uploadPhoto} fileImg={this.state.fileImg} />
                 </Modal>
                 <Footer />
             </div>

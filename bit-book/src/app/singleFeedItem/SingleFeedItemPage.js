@@ -64,6 +64,7 @@ class SingleFeedItem extends React.Component {
                     this.loadComment()
                 }
             })
+
     }
 
     loadComment() {

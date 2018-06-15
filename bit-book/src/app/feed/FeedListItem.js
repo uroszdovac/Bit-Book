@@ -38,7 +38,7 @@ const FeedListItem = (props) => {
 
             <div className='item-comments'>
                 <span className='col-3 item-comments'>{props.type} post</span>
-                <Link to={"/feed/" + props.type + "/" + props.id}><span className='col-3 offset-6 item-comments'>{props.numOfComments} Comments</span></Link>
+                <Link to={"/feed/" + props.type + "/" + props.id}><span className='col-3 offset-6 item-comments commentItem'>{props.numOfComments} Comments</span></Link>
             </div>
         </div>
     )
