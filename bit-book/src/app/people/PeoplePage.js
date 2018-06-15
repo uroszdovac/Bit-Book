@@ -41,10 +41,9 @@ class People extends React.Component {
         return (
             <div>
                 <Header />
-                <div className='col-6 offset-3'>
+                <div className='col-6 offset-3' id="wrap">
                     {(this.state.loading) ? <Loading /> : <div><Search search={this.searchUsers} />
                         <ListOfPeople users={this.state.users} search={this.state.searchText} /></div>}
-
                 </div>
                 <Footer />
 

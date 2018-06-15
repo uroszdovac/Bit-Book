@@ -91,7 +91,7 @@ class SingleFeedItem extends React.Component {
         return (
             <div >
                 <Header />
-                <div className="container-fluid">
+                <div className="container-fluid" id="wrap">
                     <div className="row">
                         <div className="col-6 offset-3">
                             <FeedItem post={this.state.post} />

@@ -107,26 +107,34 @@ class Profile extends React.Component {
         return (
             <div id="profile">
                 <Header />
-                {(this.state.loading) ? <Loading /> : (<div className="container">
-                    <img src={this.state.profile.avatar} alt="ProfileImage" />
-                    <h2>{this.state.profile.name}</h2>
-                    {(this.props.match.params.id) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
-                    <p>{this.state.profile.aboutShort}</p>
-                    <div className="row">
-                        <div className="col-3 offset-3">
-                            <div className="details">
-                                <span className="circle">P</span>
-                                <span>{this.state.profile.postsCount} posts</span>
-                            </div>
-                        </div>
-                        <div className="col-3">
-                            <div className="details" >
-                                <span className="circle">C</span>
-                                <span>{this.state.profile.commentsCount} comments</span>
+                {(this.state.loading) ? <Loading /> : (
+                    <div id="wrap" className="container">
+                        <img src={this.state.profile.avatar} alt="ProfileImage" />
+                        <h2>{this.state.profile.name}</h2>
+                        {(this.props.match.params.id) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
+                        <p>{this.state.profile.aboutShort}</p>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-3 offset-3">
+                                    <div className="bar right">
+                                        <div className="circle">
+                                            <p>P</p>
+                                        </div>
+                                        <p>{this.state.profile.postsCount} posts</p>
+                                    </div>
+                                </div>
+                                <div className="col-3">
+                                    <div className="bar" >
+                                        <div className="circle">
+                                            <p>C</p>
+                                        </div>
+                                        <p>{this.state.profile.commentsCount} comments</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>)
+                )
                 }
 
                 <Modal open={this.state.openFirstModal} onClose={this.onCloseFirstModal} center>

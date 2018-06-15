@@ -160,7 +160,7 @@ class Feed extends React.Component {
         return (
             <div>
                 <Header />
-                <div className='containter-fluid'>
+                <div className='containter-fluid' id="wrap">
                     <div className='row'>
                         <FeedList deletePost={this.deletePost} posts={this.state.posts} filterFeed={this.state.postType} />
                         <Sidebar type={this.filterPosts} />
