@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '../../partials/header/Header';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import authenticationService from '../../services/authenticationService'
 
 class Home extends React.Component {
     constructor(props) {
         super(props)
 
     }
+
 
     render() {
         return (
