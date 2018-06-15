@@ -9,7 +9,8 @@ class EditProfile extends React.Component {
         this.state = {
             img: image,
             name: "",
-            description: ""
+            description: "",
+            error: ""
         }
 
         this.nameHandler = this.nameHandler.bind(this);
@@ -22,6 +23,15 @@ class EditProfile extends React.Component {
         this.setState({
             name: event.target.value
         })
+        if (event.target.value.length > 30) {
+            this.setState({
+                error: 'You reached maximum number of letters'
+            })
+        } else {
+            this.setState({
+                error: ""
+            })
+        }
     }
 
     descriptionHandler(event) {
@@ -30,9 +40,17 @@ class EditProfile extends React.Component {
         })
     }
 
+    loadUserDetails() {
+        this.setState({
+            name: this.props.profile.name,
+            description: this.props.profile.aboutShort,
+            img: this.props.profile.avatar
+        })
+    }
+
     updateProfile() {
         let newProfile = {
-            avatarUrl: this.props.imgUrl,
+            avatarUrl: this.state.img,
             name: this.state.name,
             aboutShort: this.state.description,
             about: this.state.description,
@@ -48,6 +66,10 @@ class EditProfile extends React.Component {
         this.props.closeModal();
     }
 
+    componentDidMount() {
+
+        this.loadUserDetails()
+    }
 
     render() {
         return (
@@ -65,6 +87,7 @@ class EditProfile extends React.Component {
                     <div className="col-8 name">
                         <h4>Name</h4>
                         <input type="text" placeholder="Put your full name" value={this.state.name} onChange={this.nameHandler} />
+                        <span id="warning">{this.state.error}</span>
                         <span id="counter">{this.state.name.length}/30</span>
                     </div>
                     <div className="col-12 description">

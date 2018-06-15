@@ -421,6 +421,12 @@ iframe,img {
   margin-right: 5px;
   margin-top: 5px;
 }
+#warning {
+  float:left;
+  color: red;
+  margin-top: 5px;
+  margin-left: 5px;
+}
 /***********  PEOPLE  ************/
 .error {
   padding-top: 10px;
