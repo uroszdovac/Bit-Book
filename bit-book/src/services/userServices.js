@@ -43,6 +43,7 @@ class UserServices {
             return new UserProfile(profile.userId, profile.name, profile.email, profile.aboutShort, profile.about, profile.avatarUrl, profile.postsCount, profile.commentsCount);
         })
     }
+
     updateProfile(newProfile) {
         return axios({
             method: 'PUT',
@@ -61,12 +62,12 @@ class UserServices {
             method: 'POST',
             url: `${serviceURL}/upload`,
             headers: {
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                Key: 'bitbookdev',
+                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
 
             },
-            'body': formData
-        }).then(response => response.da)
+            data: formData
+        }).then(response => response.data);
     }
 }
 

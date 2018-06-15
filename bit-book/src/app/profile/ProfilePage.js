@@ -15,7 +15,8 @@ class Profile extends React.Component {
             profile: {},
             openFirstModal: false,
             openSecondModal: false,
-            loading: true
+            loading: true,
+            fileImg: {}
         }
 
         this.onCloseFirstModal = this.onCloseFirstModal.bind(this);
@@ -24,6 +25,8 @@ class Profile extends React.Component {
         this.onOpenSecondModal = this.onOpenSecondModal.bind(this);
         this.changeImgUrl = this.changeImgUrl.bind(this);
         this.getMyProfile = this.getMyProfile.bind(this);
+        this.selectProfileImageHandler = this.selectProfileImageHandler.bind(this);
+        this.uploadPhoto = this.uploadPhoto.bind(this);
 
 
     }
@@ -72,6 +75,29 @@ class Profile extends React.Component {
         })
     }
 
+    selectProfileImageHandler(event) {
+
+        this.setState({
+            fileImg: event.target.files[0]
+        })
+
+    }
+
+    uploadPhoto() {
+
+        const formData = new FormData();
+        formData.append('file', this.state.fileImg);
+
+        userServices.uploadImage(formData)
+            .then(data => {
+                this.setState({
+                    imgUrl: data
+                })
+            })
+        this.onCloseSecondModal()
+
+    }
+
     componentDidMount() {
 
         (this.props.match.params.id) ? this.getProfile() : this.getMyProfile();
@@ -108,7 +134,7 @@ class Profile extends React.Component {
                     <EditProfile openModal={this.onOpenSecondModal} closeModal={this.onCloseFirstModal} imgUrl={this.state.imgUrl} loadProfile={this.getMyProfile} />
                 </Modal>
                 <Modal open={this.state.openSecondModal} onClose={this.onCloseSecondModal} center>
-                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} />
+                    <UploadPhoto closeModal={this.onCloseSecondModal} saveUrl={this.changeImgUrl} selectProfileImageHandler={this.selectProfileImageHandler} uploadPhoto={this.uploadPhoto} />
                 </Modal>
                 <Footer />
             </div>
