@@ -1,4 +1,5 @@
 import React from 'react';
+import { validationImgUrl } from '../../shared/constants';
 
 
 class NewImage extends React.Component {
@@ -7,12 +8,14 @@ class NewImage extends React.Component {
 
         this.state = {
             warning: false,
+            isValid: true
         }
     }
 
     handleInput = (event) => {
         let input = event.target.value
-        if (input.includes('https://')) {
+        const isValid = validationImgUrl(event.target.value);
+        if (isValid) {
 
             this.setState({
                 warning: false
@@ -34,7 +37,7 @@ class NewImage extends React.Component {
                 <h3>New image post</h3>
                 <p>Image link</p>
                 <input type='text' onChange={this.handleInput} />
-                {this.state.warning ? <p>Input must be youtube video url</p> : ''}
+                {(this.state.warning) ? <p>Input must be youtube video url</p> : ''}
                 <input type='button' value='POST' onClick={this.props.createImage} />
             </div>
         )
