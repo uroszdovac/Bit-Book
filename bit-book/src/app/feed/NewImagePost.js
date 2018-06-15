@@ -37,8 +37,8 @@ class NewImage extends React.Component {
                 <h3>New image post</h3>
                 <p>Image link</p>
                 <input type='text' onChange={this.handleInput} />
-                {(this.state.warning) ? <p>Input must be youtube video url</p> : ''}
-                <input type='button' value='POST' onClick={this.props.createImage} />
+                {(this.state.warning) ? <p>Input must be valid image url</p> : ''}
+                {(this.state.isValid && this.props.imageContent != "") ? <input type='button' value='POST' onClick={this.props.createImage} /> : <input type='button' value='POST' disabled />}
             </div>
         )
     }

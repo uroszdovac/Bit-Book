@@ -5,7 +5,7 @@ class NewVideo extends React.Component {
         super(props)
 
         this.state = {
-            warning: false,
+            warning: null,
             // inputText: ''
         }
     }
@@ -40,7 +40,7 @@ class NewVideo extends React.Component {
                 <p>Youtube video link</p>
                 <input type='text' onChange={this.handleInput} />
                 {this.state.warning ? <p>Input must be youtube video url</p> : ''}
-                <input type='button' value='POST' onClick={this.props.createVideo} />
+                {(!this.state.warning) ? <input type='button' value='POST' onClick={this.props.createVideo} /> : <input type='button' value='POST' disabled />}
             </div>
         )
     }

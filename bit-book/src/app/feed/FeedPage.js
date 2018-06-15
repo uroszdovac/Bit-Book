@@ -166,7 +166,7 @@ class Feed extends React.Component {
                         <Sidebar type={this.filterPosts} />
 
                         <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                            {this.state.popUp === 'video' ? <NewVideoPost createVideo={this.createVideoPost} videoUrl={this.newVideoContent} /> : this.state.popUp === 'image' ? <NewImagePost imageUrl={this.newImageContent} createImage={this.createImagePost} /> : <NewTextPost createText={this.createTextPost} text={this.newTextContent} />}
+                            {this.state.popUp === 'video' ? <NewVideoPost createVideo={this.createVideoPost} videoUrl={this.newVideoContent} /> : this.state.popUp === 'image' ? <NewImagePost imageUrl={this.newImageContent} createImage={this.createImagePost} imageContent={this.state.imageContent} /> : <NewTextPost createText={this.createTextPost} text={this.newTextContent} textContent={this.state.textContent} />}
                         </Modal>
 
                     </div>
