@@ -67,7 +67,9 @@ footer {
 #dropdownMenuButton {
   padding-right: 0;
 }
-
+.dropdown-item {
+  cursor: pointer;
+}
 
 iframe,img {
   width: 100%;
@@ -95,8 +97,12 @@ iframe,img {
 
 .item-comments {
   margin-top: 15px;
+  
 }
-
+.commentItem:hover{
+  color: blue;
+  text-decoration: underline;
+}
 .itemName {
   text-align: left;
 }
@@ -347,7 +353,8 @@ iframe,img {
 
 #editButton {
   text-decoration: underline;
-  color: rgb(86, 86, 245)
+  color: rgb(86, 86, 245);
+  cursor: pointer;
 }
 
 /*    EDIT PROFILE    */
@@ -381,7 +388,8 @@ iframe,img {
 .name input, .description input{
   border: 1px white solid;
   border-bottom: 1px red solid;
-  width: 100%
+  width: 100%;
+  outline: none;
 }
 .description input{
   margin-top: 20px;

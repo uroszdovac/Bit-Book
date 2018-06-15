@@ -36,8 +36,7 @@ class Profile extends React.Component {
             .then(profile => {
                 this.setState({
                     profile,
-                    loading: false,
-                    imgUrl: ""
+                    loading: false
                 })
             })
     }

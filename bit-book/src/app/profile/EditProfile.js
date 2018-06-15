@@ -11,10 +11,10 @@ class EditProfile extends React.Component {
             name: "",
             description: ""
         }
+
         this.nameHandler = this.nameHandler.bind(this);
         this.descriptionHandler = this.descriptionHandler.bind(this);
         this.updateProfile = this.updateProfile.bind(this);
-        // this.uploadFileHandler = this.uploadFileHandler.bind(this);
 
     }
 
@@ -64,11 +64,11 @@ class EditProfile extends React.Component {
                     </div>
                     <div className="col-8 name">
                         <h4>Name</h4>
-                        <input type="text" placeholder="Put your full name" onChange={this.nameHandler} />
+                        <input type="text" placeholder="Put your full name" value={this.state.name} onChange={this.nameHandler} />
                         <span id="counter">{this.state.name.length}/30</span>
                     </div>
                     <div className="col-12 description">
-                        <input type="text" placeholder="Put some text that describes you" onChange={this.descriptionHandler} />
+                        <input type="text" value={this.state.description} placeholder="Put some text that describes you" onChange={this.descriptionHandler} />
                     </div>
                 </div>
                 <div className="row close-update">
@@ -76,7 +76,7 @@ class EditProfile extends React.Component {
                         <input type='button' value='CLOSE' onClick={this.props.closeModal} />
                     </div>
                     <div className="col-2">
-                        <input type='button' value='UPDATE' onClick={this.updateProfile} />
+                        {(this.state.name.length >= 3 && this.state.description != "") ? <input type='button' value='UPDATE' onClick={this.updateProfile} /> : <input type='button' value='UPDATE' disabled />}
                     </div>
                 </div>
             </div>
