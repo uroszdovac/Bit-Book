@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../../partials/header/Header';
+import Login from './Login';
+import Register from './Register';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import authenticationService from '../../services/authenticationService'
 
@@ -27,23 +29,10 @@ class Home extends React.Component {
                             </TabList>
 
                             <TabPanel className='loginRegisterInputs'>
-                                <div>
-                                    <input className='col-12' type="text" id="loginUsername" name="loginUsername" placeholder="Your username" />
-                                    <input className='col-12' type="password" id="loginPass" name="loginPass" placeholder="Your password" />
-                                    <input className='col-12 loginButton' type="button" value="Log In" />
-                                </div>
+                                <Login />
                             </TabPanel>
                             <TabPanel className='loginRegisterInputs'>
-
-                                <input className='col-12' type="text" id="registerName" name="registerName" placeholder=" Full Name" />
-
-                                <input className='col-12' type="email" id="registerEmail" name="registerEmail" placeholder=" Email Address" />
-
-                                <input className='col-12' type="text" id="loginUsername" name="loginUsername" placeholder=" Username" />
-
-                                <input className='col-12' type="password" id="registerPass" name="registerPass" placeholder=" Min 6 characters" />
-
-                                <input className='col-12 registerButton' type="button" value="Register" />
+                                <Register />
                             </TabPanel>
                         </Tabs>
                     </div>
