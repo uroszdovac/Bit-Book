@@ -1,7 +1,7 @@
 import React from 'react';
 import image from '../../images/upload-photo.png';
 import { validationImgUrl } from '../../shared/constants';
-import userServices from '../../services/userServices';
+
 
 class UploadPhoto extends React.Component {
     constructor(props) {
@@ -10,11 +10,10 @@ class UploadPhoto extends React.Component {
         this.state = {
             content: "",
             isValid: true,
-            error: '',
-            fileImg: {}
+            error: ''
         }
         this.contentHandler = this.contentHandler.bind(this);
-        this.selectProfileImageHandler = this.selectProfileImageHandler.bind(this);
+
     }
 
     contentHandler(event) {
@@ -40,14 +39,6 @@ class UploadPhoto extends React.Component {
     }
 
 
-    // selectProfileImageHandler(event) {
-    //     console.log(event.target.file);
-
-    //     // const file = event.target.file[0];
-
-
-    // }
-
     render() {
         return (
             <div id="uploadPhoto">
@@ -72,10 +63,10 @@ class UploadPhoto extends React.Component {
                     </div>
                     <div className="col-12">
                         <div className="col-12">
-                            <input type="file" onChange={this.selectProfileImageHandler} />
+                            <input type="file" onChange={this.props.selectProfileImageHandler} />
                         </div>
                         <div className="col-6">
-                            <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" />
+                            <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.uploadPhoto} />
                         </div>
                     </div>
                 </div>
