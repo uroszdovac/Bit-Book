@@ -18,6 +18,27 @@ class AuthenticationServices {
                 return response;
             })
     }
+
+
+    register(registerUser) {
+        return axios({
+            method: 'POST',
+            url: `${serviceURL}/register`,
+            headers: {
+                Key: key,
+                'Content-Type': 'application/json'
+            },
+            data: registerUser
+        })
+            .then(response => {
+                return response
+
+            }).catch((error) => {
+                console.table(error)
+            })
+    }
+
+
 }
 
 export default new AuthenticationServices();

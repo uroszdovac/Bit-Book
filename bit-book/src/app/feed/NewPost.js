@@ -19,7 +19,7 @@ class NewPost extends React.Component {
                 <h3 >New post</h3>
                 <p>Post content</p>
                 <input type='text' onChange={this.handleInput} />
-                {(this.props.textContent == "") ? <input type='button' value='POST' disabled /> : <input type='button' value='POST' onClick={this.props.createText} />}
+                {(this.props.textContent === "") ? <input type='button' value='POST' disabled /> : <input type='button' value='POST' onClick={this.props.createText} />}
             </div>
         )
     }

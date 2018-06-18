@@ -25,7 +25,7 @@ class CommentListItem extends React.Component {
         return (
             <div className="row item comment" >
                 <div className="col-2">
-                    <img src={this.state.user.avatar} alt="image" />
+                    <img src={this.state.user.avatar} alt="avatar" />
                     <h3>{this.state.user.name}</h3>
                 </div>
                 <div className="col-10 textItem">

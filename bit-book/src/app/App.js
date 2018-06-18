@@ -15,8 +15,10 @@ class App extends Component {
       isLoggedIn: false
     }
   }
+
   componentDidMount() {
     const user = localStorage.getItem('user');
+    console.log(user)
     if (user) {
       this.setState({
         isLoggedIn: true
@@ -24,6 +26,23 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const user = localStorage.getItem('user');
+    if (user) {
+      if (this.state.isLoggedIn !== true) {
+        this.setState({
+          isLoggedIn: true
+        })
+      }
+    }
+    else {
+      if (this.state.isLoggedIn === true) { //ako ne postoji user a setovano je na true onda promeni 
+        this.setState({
+          isLoggedIn: false
+        })
+      }
+    }
+  }
 
   render() {
     return (
@@ -35,7 +54,7 @@ class App extends Component {
             <Route path="/people/:id" component={Profile} />
             <Route path="/profile" component={Profile} />
             <Route path="/feed/:type/:id" component={SingleFeedItem} />
-            <Route path="/" component={Feed} />
+            <Redirect from="/" to="/feed" />
           </Switch >
         ) : (
             <Switch>

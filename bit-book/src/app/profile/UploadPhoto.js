@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../../images/upload-photo.png';
 import { validationImgUrl } from '../../shared/constants';
 
 
@@ -13,7 +12,6 @@ class UploadPhoto extends React.Component {
             error: ''
         }
         this.contentHandler = this.contentHandler.bind(this);
-
     }
 
     contentHandler(event) {
@@ -54,7 +52,7 @@ class UploadPhoto extends React.Component {
                         </div>
                         <div className="col-12 row">
                             <div className="col-6">
-                                {(!this.state.isValid || this.state.content == "") ? <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" /> : <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.closeModal} />}
+                                {(!this.state.isValid || this.state.content === "") ? <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" /> : <input className="uploadPhotoButton" type="button" value="UPLOAD PHOTO" onClick={this.props.closeModal} />}
                             </div>
                             <div className="col-6 error">
                                 <span>{this.state.error}</span>

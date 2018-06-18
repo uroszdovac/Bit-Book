@@ -34,6 +34,7 @@ class Profile extends React.Component {
     getMyProfile() {
         return userServices.getMyProfile()
             .then(profile => {
+
                 this.setState({
                     profile,
                     loading: false
@@ -75,15 +76,12 @@ class Profile extends React.Component {
     }
 
     selectProfileImageHandler(event) {
-
         this.setState({
             fileImg: event.target.files[0]
         })
-
     }
 
     uploadPhoto() {
-
         const formData = new FormData();
         formData.append('file', this.state.fileImg);
 
@@ -94,16 +92,20 @@ class Profile extends React.Component {
                 })
             })
         this.onCloseSecondModal()
-
     }
 
     componentDidMount() {
-
         (this.props.match.params.id) ? this.getProfile() : this.getMyProfile();
-
     }
 
+    componentWillReceiveProps(nextProps) {
+        (nextProps.match.params.id) ? this.getProfile() : this.getMyProfile()
+    }
+
+
     render() {
+        const local = localStorage.getItem('user')
+        const email = JSON.parse(local).email
         return (
             <div id="profile">
                 <Header />
@@ -111,7 +113,7 @@ class Profile extends React.Component {
                     <div id="wrap" className="container">
                         <img src={this.state.profile.avatar} alt="ProfileImage" />
                         <h2>{this.state.profile.name}</h2>
-                        {(this.props.match.params.id) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
+                        {(this.props.match.params.id && (this.state.profile.email != email)) ? "" : <p id="editButton" onClick={this.onOpenFirstModal}>Edit profile</p>}
                         <p>{this.state.profile.aboutShort}</p>
                         <div className="container">
                             <div className="row">

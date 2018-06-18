@@ -1,6 +1,5 @@
 import React from 'react';
 import postServices from '../../services/postServices';
-import userServices from '../../services/userServices';
 import commentServices from '../../services/commentServices';
 import Header from '../../partials/header/Header';
 import Footer from '../../partials/footer/Footer';
@@ -69,7 +68,7 @@ class SingleFeedItem extends React.Component {
 
     loadComment() {
         const id = this.props.match.params.id;
-        const type = this.props.match.params.type;
+        // const type = this.props.match.params.type;
 
         return commentServices.getComments(id).then(comments => {
 

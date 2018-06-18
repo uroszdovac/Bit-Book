@@ -1,16 +1,16 @@
-import { serviceURL } from '../shared/constants.js';
+import { serviceURL, key, getSessionId } from '../shared/constants.js';
 import axios from 'axios';
 import User from '../entities/User';
 import UserProfile from '../entities/UserProfile'
 
-
 class UserServices {
 
     getUsers() {
+
         return axios.get(serviceURL + "/users", {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const result = response.data;
@@ -23,8 +23,8 @@ class UserServices {
     getUser(id) {
         return axios.get(serviceURL + "/users/" + id, {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const user = response.data;
@@ -35,8 +35,8 @@ class UserServices {
     getMyProfile() {
         return axios.get(serviceURL + "/profile", {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const profile = response.data;
@@ -50,8 +50,8 @@ class UserServices {
             url: `${serviceURL}/Profiles`,
             data: newProfile,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         })
             .then(response => response.status)
@@ -62,9 +62,8 @@ class UserServices {
             method: 'POST',
             url: `${serviceURL}/upload`,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-
+                Key: key,
+                SessionId: getSessionId()
             },
             data: formData
         }).then(response => response.data);
