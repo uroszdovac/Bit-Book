@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../partials/header/Header';
 import Login from './Login';
 import Register from './Register';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -12,22 +11,35 @@ class Home extends React.Component {
         this.state = {
             username: '',
             password: '',
-            status: false
+            status: false,
+            regName: '',
+            regEmail: '',
+            regUsername: '',
+            regPassword: '',
+            passwordError: false,
+            userExist: false,
+            loginError: false
         }
         this.getPassword = this.getPassword.bind(this);
         this.getUsername = this.getUsername.bind(this);
         this.userLogin = this.userLogin.bind(this);
+        this.registerName = this.registerName.bind(this);
+        this.registerEmail = this.registerEmail.bind(this);
+        this.registerUsername = this.registerUsername.bind(this);
+        this.registerPassword = this.registerPassword.bind(this);
+        this.registerNewUser = this.registerNewUser.bind(this);
     }
 
     getUsername(username) {
         this.setState({
-            username
+            username,
+            loginError: false
         })
     }
-
     getPassword(password) {
         this.setState({
-            password
+            password,
+            loginError: false
         })
     }
     userLogin() {
@@ -42,15 +54,66 @@ class Home extends React.Component {
                         status: true
                     })
                 }
-            });
+            }).catch(() => {
+                this.setState({
+                    loginError: true
+                })
+            })
+    }
 
+    registerName(name) {
+        this.setState({
+            regName: name
+        })
+    }
+    registerEmail(email) {
+        this.setState({
+            regEmail: email
+        })
+    }
+    registerUsername(username) {
+        this.setState({
+            regUsername: username,
+            userExist: false
+        })
+    }
+    registerPassword(password) {
+        this.setState({
+            regPassword: password,
+            passwordError: false
+        })
+    }
+    registerNewUser() {
+        if (this.state.regPassword.length < 6) {
+            this.setState({
+                passwordError: true
+            })
+        } else {
+            let user = {
+                name: this.state.regName,
+                email: this.state.regEmail,
+                username: this.state.regUsername,
+                password: this.state.regPassword
+            }
+            authenticationService.register(user).then(response => {
+                console.log(response.status)
+                if (response.status >= 200 && response.status < 300) {
+                    this.setState({
+                        userExist: false
+                    })
+                }
+            }).catch(() => {
+                this.setState({
+                    userExist: true
+                })
+            })
+        }
     }
 
 
     render() {
         return (
             <div className='home'>
-                {/* <Header /> */}
                 <div className='row welcome'>
                     <div className='offset-2 col-4'>
                         <h1>WELCOME</h1>
@@ -65,10 +128,10 @@ class Home extends React.Component {
                             </TabList>
 
                             <TabPanel className='loginRegisterInputs'>
-                                <Login getUsername={this.getUsername} getPassword={this.getPassword} userLogin={this.userLogin} status={this.state.status} />
+                                <Login loginError={this.state.loginError} getUsername={this.getUsername} getPassword={this.getPassword} userLogin={this.userLogin} status={this.state.status} />
                             </TabPanel>
                             <TabPanel className='loginRegisterInputs'>
-                                <Register />
+                                <Register registerName={this.registerName} registerEmail={this.registerEmail} registerUsername={this.registerUsername} registerPassword={this.registerPassword} registerNewUser={this.registerNewUser} passwordError={this.state.passwordError} userExist={this.state.userExist} />
                             </TabPanel>
                         </Tabs>
                     </div>

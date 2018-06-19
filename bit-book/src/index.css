@@ -31,9 +31,20 @@ header {
   box-shadow: 0px 9px 21px -6px rgba(138, 138, 138, 0.57);
 }
 
+header a {
+  color: white;
+}
+
+header a:hover {
+  color: white;
+}
 
 h1 {
   margin-bottom: 0;
+}
+
+nav div {
+  padding-top: 12px ;
 }
 
 header, nav div a {
@@ -306,12 +317,21 @@ iframe,img {
   padding-top: 10px;
 }
 #button {
-  background-color: rgb(231, 248, 255);
-  color: black;
-  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(49, 125, 248);
+  border: 1px solid rgb(49, 125, 248);
+  color: white;
+  border-radius: 3px;
   width: 100px;
   margin-left: -60px;
+  padding: 4px 7px;
 }
+
+#button:hover {
+  cursor: pointer;
+  background-color: rgb(8, 96, 238);
+}
+
 #noComments {
   font-size: 270%;
   text-align: center;
@@ -375,35 +395,49 @@ iframe,img {
 
 /*    EDIT PROFILE    */
 
+.editProfile {
+  padding: 5px 10px 10px 35px;
+}
+
 .editProfile img{
   width: 85%;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 .title{
   text-align: center;
 }
 .uploadPhoto {
-  text-align: center;
-  /* margin-left: 1px; */
+  text-align: center;  
 }
+
+#uploadPhoto {
+  padding: 5px 3px 10px 20px;
+}
+
 .uploadPhoto input , .close-update input{
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: rgb(102, 151, 243);
+  background-color: rgb(34, 115, 245);
+  letter-spacing: 1px;
+  border-radius: 3px;
+  color: white;
   border: none;
   padding: 5px;
+  cursor: pointer;
 }
 .name {
   padding-top: 75px;
 }
 .name h4 {
-  color:red;
+  color:rgb(230, 0, 0);
   font-size: 100%;
   margin-bottom: 10px;
 }
 .name input, .description input{
   border: 1px white solid;
-  border-bottom: 1px red solid;
+  border-bottom: 2px rgb(230, 0, 0) solid;
   width: 100%;
   outline: none;
 }
@@ -415,6 +449,11 @@ iframe,img {
 #uploadPhoto input {
   margin: 10px 0;
 }
+
+.title h2 {
+  margin-bottom: 30px;
+}
+
 .textInput {
   border: 1px white solid;
   border-bottom: 1px grey solid;
@@ -424,16 +463,19 @@ iframe,img {
   outline: none;
 }
 .uploadPhotoButton, .closeButton {
-  background-color: rgb(102, 151, 243);
+  background-color: rgb(34, 115, 245);
+  color: white;
+  border-radius: 3px;
   border: none;
-  padding: 5px;
+  padding:5px 10px;
+  cursor: pointer;
 }
 #uploadPhoto span {
-  color:red
+  color:rgb(230, 0, 0);
 }
 #counter {
   float: right;
-  color: red;
+  color: rgb(230, 0, 0);
   margin-right: 5px;
   margin-top: 5px;
 }
@@ -545,7 +587,7 @@ iframe,img {
 /***  FORM  ***/
 
 .form{
-  border: 1px solid rgb(240, 240, 240);
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 5px;
   text-align: center;
   padding: 18px 25px;
@@ -580,27 +622,37 @@ iframe,img {
 }
 
 .loginRegisterInputs input{
-  border: 2px solid rgb(189, 189, 190);
+  border: 2px solid rgb(160, 160, 160);
   border-radius: 5px;  
   margin-bottom: 13px;
   height: 36px;
   font-size: 110%;
   background-color: rgba(255, 255, 255, 0);
-  
 }
 
 .loginRegisterInputs input:focus{
   outline: none;
 }
 
+.loginRegisterInputs input:last-of-type {
+  background-color: rgb(34, 115, 245); 
+  border: 2px solid rgb(34, 115, 245);   
+  color:white;
+}
+
+.loginRegisterInputs input:last-of-type:hover {
+  background-color: rgb(3, 86, 219);
+  border: 1px solid rgb(3, 86, 219);
+}
+
 .loginButton, .registerButton {
   cursor: pointer;
 }
-.loginButton:hover, 
-.registerButton:hover {
-  background-color: rgb(34, 115, 245);
-  color: white;
-  border: 2px solid rgb(34, 115, 245);
+
+.error {
+  margin-top: 0px;
+  padding-top: 0px;
+  color:red;
 }
 
 /*form animate*/

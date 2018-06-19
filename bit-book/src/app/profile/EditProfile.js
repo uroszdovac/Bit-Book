@@ -99,7 +99,7 @@ class EditProfile extends React.Component {
                         <input type='button' value='CLOSE' onClick={this.props.closeModal} />
                     </div>
                     <div className="col-2">
-                        {(this.state.name.length >= 3 && this.state.description != "") ? <input type='button' value='UPDATE' onClick={this.updateProfile} /> : <input type='button' value='UPDATE' disabled />}
+                        {(this.state.name.length >= 3 && this.state.description !== "") ? <input type='button' value='UPDATE' onClick={this.updateProfile} /> : <input type='button' value='UPDATE' disabled />}
                     </div>
                 </div>
             </div>

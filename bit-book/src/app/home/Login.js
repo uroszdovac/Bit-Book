@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
@@ -18,8 +17,11 @@ const Login = (props) => {
 
             <input className='col-12' type="password" id="loginPass" name="loginPass" placeholder="Your password" onChange={passwordHandler} />
 
-            {(props.status) ? <Redirect to='/feed' /> : <input className='col-12 loginButton' type="button" value="Log In" onClick={props.userLogin} />}
+            {(props.status) ? <Redirect to='/' /> : <input className='col-12 loginButton' type="button" value="Log In" onClick={props.userLogin} />}
+            {(props.loginError) ? <p className='error'>'Invalid username/password'</p> : ''}
+
         </div>
+
     )
 }
 

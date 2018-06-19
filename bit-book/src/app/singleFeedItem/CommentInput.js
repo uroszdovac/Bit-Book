@@ -34,7 +34,7 @@ class CommentInput extends React.Component {
                     <input onChange={this.contentHandler} value={this.state.content} id="input" type="text" placeholder="Add your comment" />
                 </div>
                 <div className="col-2 send">
-                    {(this.state.content != "") ? <input onClick={this.postComment} id="button" type="button" value="Send" /> : <input onClick={this.props.postComment} disabled id="button" type="button" value="Send" />}
+                    {(this.state.content !== "") ? <input onClick={this.postComment} id="button" type="button" value="Send" /> : <input onClick={this.props.postComment} disabled id="button" type="button" value="Send" />}
                 </div>
             </div>
         )

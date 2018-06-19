@@ -17,7 +17,7 @@ const ListItem = (props) => {
     return (
         <div className='row item itemPeoplePage'>
             <div className='col-2'>
-                <img src={props.avatar} alt='image' />
+                <img src={props.avatar} alt='avatar' />
             </div>
             <div className='col-8'>
                 <Link to={'people/' + props.id}><h4>{props.name}</h4></Link>
