@@ -1,4 +1,4 @@
-import { serviceURL } from '../shared/constants.js';
+import { serviceURL, key, getSessionId } from '../shared/constants.js';
 import axios from 'axios';
 import Comment from '../entities/Comment';
 
@@ -7,8 +7,8 @@ class CommentServices {
     getComments(id) {
         return axios.get(serviceURL + "/Comments?postId=" + id, {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const result = response.data;
@@ -24,8 +24,8 @@ class CommentServices {
             url: `${serviceURL}/Comments`,
             data: newComment,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                Key: key,
+                SessionId: getSessionId(),
                 'Content-Type': 'application/json'
             }
         })
