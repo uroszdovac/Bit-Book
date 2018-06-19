@@ -16,7 +16,8 @@ class Profile extends React.Component {
             openFirstModal: false,
             openSecondModal: false,
             loading: true,
-            fileImg: null
+            fileImg: null,
+            imgUrl: ""
         }
 
         this.onCloseFirstModal = this.onCloseFirstModal.bind(this);

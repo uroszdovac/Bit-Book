@@ -8,13 +8,17 @@ class NewImage extends React.Component {
 
         this.state = {
             warning: false,
-            isValid: true
+            isValid: null
         }
     }
 
     handleInput = (event) => {
         let input = event.target.value
         const isValid = validationImgUrl(event.target.value);
+        this.setState({
+            isValid
+        })
+
         if (isValid) {
 
             this.setState({

@@ -1,4 +1,4 @@
-import { serviceURL } from '../shared/constants.js';
+import { serviceURL, key, getSessionId } from '../shared/constants.js';
 import axios from 'axios';
 import ImagePost from '../entities/ImagePost';
 import VideoPost from '../entities/VideoPost';
@@ -10,8 +10,8 @@ class PostServices {
     getPosts() {
         return axios.get(serviceURL + "/posts", {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const result = response.data;
@@ -23,14 +23,16 @@ class PostServices {
                 }
                 return new TextPost(post.id, post.dateCreated, post.userId, post.userDisplayName, post.type, post.commentsNum, post.text)
             })
-        })
+        });
+
+
     }
 
     getImagePost(id) {
         return axios.get(serviceURL + "/ImagePosts/" + id, {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const post = response.data;
@@ -41,8 +43,8 @@ class PostServices {
     getVideoPost(id) {
         return axios.get(serviceURL + "/VideoPosts/" + id, {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const post = response.data;
@@ -53,8 +55,8 @@ class PostServices {
     getTextPost(id) {
         return axios.get(serviceURL + "/TextPosts/" + id, {
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
         }).then(response => {
             const post = response.data;
@@ -68,8 +70,8 @@ class PostServices {
             url: `${serviceURL}/VideoPosts`,
             data: newVideoPost,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                Key: key,
+                SessionId: getSessionId(),
                 'Content-Type': 'application/json'
             }
         })
@@ -82,8 +84,8 @@ class PostServices {
             url: `${serviceURL}/ImagePosts`,
             data: newImagePost,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                Key: key,
+                SessionId: getSessionId(),
                 'Content-Type': 'application/json'
             }
         })
@@ -96,8 +98,8 @@ class PostServices {
             url: `${serviceURL}/TextPosts`,
             data: newTextPost,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                Key: key,
+                SessionId: getSessionId(),
                 'Content-Type': 'application/json'
             }
         })
@@ -110,8 +112,8 @@ class PostServices {
             method: 'delete',
             url: `${serviceURL}/Posts/${id}`,
             headers: {
-                Key: 'bitbookdev',
-                SessionId: '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE'
+                Key: key,
+                SessionId: getSessionId()
             }
 
         })

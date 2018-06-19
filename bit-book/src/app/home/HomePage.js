@@ -18,7 +18,8 @@ class Home extends React.Component {
             regPassword: '',
             passwordError: false,
             userExist: false,
-            loginError: false
+            loginError: false,
+            currentIndex: 0
         }
         this.getPassword = this.getPassword.bind(this);
         this.getUsername = this.getUsername.bind(this);
@@ -28,6 +29,7 @@ class Home extends React.Component {
         this.registerUsername = this.registerUsername.bind(this);
         this.registerPassword = this.registerPassword.bind(this);
         this.registerNewUser = this.registerNewUser.bind(this);
+        this.onTabSelect = this.onTabSelect.bind(this);
     }
 
     getUsername(username) {
@@ -96,10 +98,10 @@ class Home extends React.Component {
                 password: this.state.regPassword
             }
             authenticationService.register(user).then(response => {
-                console.log(response.status)
                 if (response.status >= 200 && response.status < 300) {
                     this.setState({
-                        userExist: false
+                        userExist: false,
+                        currentIndex: 0
                     })
                 }
             }).catch(() => {
@@ -108,6 +110,11 @@ class Home extends React.Component {
                 })
             })
         }
+    }
+    onTabSelect(index) {
+        this.setState({
+            currentIndex: index
+        })
     }
 
 
@@ -120,7 +127,7 @@ class Home extends React.Component {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu elit ipsum. Pellentesque elit erat, hendrerit faucibus ligula eu, pretium mattis diam. Vivamus semper leo sed consectetur dictum. Suspendisse magna tortor, pellentesque in feugiat in, porta eu tortor. Etiam imperdiet tempor est at placerat. Nam ut mi et sapien vehicula imperdiet.</p>
                     </div>
                     <div className='offset-1 col-3'>
-                        <Tabs className='form animated bounceInLeft' defaultIndex={this.props.match.params.mode === "register" ? 1 : 0} defaultFocus={true}>
+                        <Tabs className='form animated bounceInLeft' selectedIndex={this.state.currentIndex} onSelect={this.onTabSelect}>
 
                             <TabList className='loginRegister row'>
                                 <Tab className='col-6'>Log In</Tab>
