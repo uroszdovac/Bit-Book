@@ -12,24 +12,22 @@ class Home extends React.Component {
             username: '',
             password: '',
             status: false,
-            regName: '',
-            regEmail: '',
-            regUsername: '',
-            regPassword: '',
+            registerName: '',
+            registerEmail: '',
+            loginUsername: '',
+            registerPass: '',
             passwordError: false,
             userExist: false,
             loginError: false,
             currentIndex: 0
         }
+
         this.getPassword = this.getPassword.bind(this);
         this.getUsername = this.getUsername.bind(this);
         this.userLogin = this.userLogin.bind(this);
-        this.registerName = this.registerName.bind(this);
-        this.registerEmail = this.registerEmail.bind(this);
-        this.registerUsername = this.registerUsername.bind(this);
-        this.registerPassword = this.registerPassword.bind(this);
         this.registerNewUser = this.registerNewUser.bind(this);
         this.onTabSelect = this.onTabSelect.bind(this);
+        this.collectValues = this.collectValues.bind(this);
     }
 
     getUsername(username) {
@@ -38,12 +36,14 @@ class Home extends React.Component {
             loginError: false
         })
     }
+
     getPassword(password) {
         this.setState({
             password,
             loginError: false
         })
     }
+
     userLogin() {
         let user = {
             username: this.state.username,
@@ -63,39 +63,23 @@ class Home extends React.Component {
             })
     }
 
-    registerName(name) {
+    collectValues(value, name) {
         this.setState({
-            regName: name
+            [name]: value
         })
     }
-    registerEmail(email) {
-        this.setState({
-            regEmail: email
-        })
-    }
-    registerUsername(username) {
-        this.setState({
-            regUsername: username,
-            userExist: false
-        })
-    }
-    registerPassword(password) {
-        this.setState({
-            regPassword: password,
-            passwordError: false
-        })
-    }
+
     registerNewUser() {
-        if (this.state.regPassword.length < 6) {
+        if (this.state.registerPass.length < 6) {
             this.setState({
                 passwordError: true
             })
         } else {
             let user = {
-                name: this.state.regName,
-                email: this.state.regEmail,
-                username: this.state.regUsername,
-                password: this.state.regPassword
+                name: this.state.registerName,
+                email: this.state.registerEmail,
+                username: this.state.loginUsername,
+                password: this.state.registerPass
             }
             authenticationService.register(user).then(response => {
                 if (response.status >= 200 && response.status < 300) {
@@ -111,12 +95,12 @@ class Home extends React.Component {
             })
         }
     }
+
     onTabSelect(index) {
         this.setState({
             currentIndex: index
         })
     }
-
 
     render() {
         return (
@@ -138,7 +122,7 @@ class Home extends React.Component {
                                 <Login loginError={this.state.loginError} getUsername={this.getUsername} getPassword={this.getPassword} userLogin={this.userLogin} status={this.state.status} />
                             </TabPanel>
                             <TabPanel className='loginRegisterInputs'>
-                                <Register registerName={this.registerName} registerEmail={this.registerEmail} registerUsername={this.registerUsername} registerPassword={this.registerPassword} registerNewUser={this.registerNewUser} passwordError={this.state.passwordError} userExist={this.state.userExist} />
+                                <Register collectValues={this.collectValues} registerNewUser={this.registerNewUser} passwordError={this.state.passwordError} userExist={this.state.userExist} />
                             </TabPanel>
                         </Tabs>
                     </div>
