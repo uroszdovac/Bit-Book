@@ -118,8 +118,20 @@ iframe,img {
   text-align: left;
 }
 
+.itemName h5 {
+  display: inline-block;
+}
+
+.itemName img {
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
 .itemProfileRow {
   margin-left: 5px ;
+  margin-bottom: 15px ;
 }
 
 /*** floating button ***/
@@ -542,6 +554,7 @@ iframe,img {
 
 #dropdownMenu2{
   background-color: rgb(231, 248, 255);
+  padding: 0;
 }
 
 #deletePost,#deletePost input{

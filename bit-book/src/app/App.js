@@ -18,7 +18,6 @@ class App extends Component {
 
   componentDidMount() {
     const user = localStorage.getItem('user');
-    console.log(user)
     if (user) {
       this.setState({
         isLoggedIn: true

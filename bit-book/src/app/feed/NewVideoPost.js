@@ -5,15 +5,13 @@ class NewVideo extends React.Component {
         super(props)
 
         this.state = {
-            warning: null,
-            // inputText: ''
+            warning: null
         }
     }
 
     handleInput = (event) => {
         let input = event.target.value
         if (input.includes('https://www.youtube.com/watch?')) {
-
             this.setState({
                 warning: false
             })
@@ -21,9 +19,6 @@ class NewVideo extends React.Component {
             let inputSplit = input.split('=');
             let output = 'https://www.youtube.com/embed/' + inputSplit[1];
 
-            // this.setState({
-            //     inputText: event.target.value
-            // })
             this.props.videoUrl(output)
 
         } else {
@@ -33,12 +28,18 @@ class NewVideo extends React.Component {
         }
     }
 
+    handlerPost = (event) => {
+        if (event.keyCode === 13) {
+            this.props.createVideo();
+        }
+    }
+
     render() {
         return (
             <div className='popUp' >
                 <h3>New video post</h3>
                 <p>Youtube video link</p>
-                <input type='text' onChange={this.handleInput} />
+                <input type='text' onChange={this.handleInput} onKeyUp={this.handlerPost} autoFocus />
                 {this.state.warning ? <p>Input must be youtube video url</p> : ''}
                 {(!this.state.warning) ? <input type='button' value='POST' onClick={this.props.createVideo} /> : <input type='button' value='POST' disabled />}
             </div>
