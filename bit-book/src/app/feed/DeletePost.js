@@ -8,7 +8,7 @@ const DeletePost = (props) => {
 
     return (
 
-        <div className="offset-7 col-1" >
+        <div className='col-1' >
             <button className="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" >
                 <i className="fa fa-angle-down"></i>
             </button>

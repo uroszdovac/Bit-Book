@@ -14,9 +14,9 @@ const FeedListItem = (props) => {
         <div className='item'>
 
             {props.type === "text" ?
-                < div >
+                <div>
                     <div className='row itemProfileRow'>
-                        <Profile name={props.userName} /> <DeletePost deletePost={props.deletePost} id={props.id} />
+                        <Profile className='col-11' userId={props.userId} name={props.userName} image={props.image} /> <DeletePost className='col-1' deletePost={props.deletePost} id={props.id} />
                     </div>
                     <TextPost value={props.value} />
                 </div>
@@ -24,14 +24,14 @@ const FeedListItem = (props) => {
                 : props.type === "image" ?
                     <div>
                         <div className='row itemProfileRow'>
-                            <Profile name={props.userName} /><DeletePost deletePost={props.deletePost} id={props.id} />
+                            <Profile className='col-11' userId={props.userId} name={props.userName} /><DeletePost deletePost={props.deletePost} id={props.id} />
                         </div>
                         <Image value={props.value} />
                     </div>
                     :
                     <div>
                         <div className='row itemProfileRow'>
-                            <Profile name={props.userName} /><DeletePost deletePost={props.deletePost} id={props.id} />
+                            <Profile className='col-11' userId={props.userId} name={props.userName} /><DeletePost deletePost={props.deletePost} id={props.id} />
                         </div>
                         <Video value={props.value} />
                     </div>}
